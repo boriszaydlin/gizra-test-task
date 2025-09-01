@@ -1,0 +1,16 @@
+{% if color == 'green' %}
+  {% set color_class = 'text-green-700' %}
+  {% set background_class = 'bg-green-400' %}
+{% elseif color == 'gray' %}
+  {% set color_class = 'text-gray-700' %}
+  {% set background_class = 'bg-gray-400' %}
+{% elseif color == 'dark-gray' %}
+  {% set color_class = 'text-gray-700' %}
+  {% set background_class = 'bg-gray-500' %}
+{% endif %}
+
+
+
+<div class="{{ color_class }} inline-block rounded-full px-2 py-0.5 {{ background_class }} bg-opacity-20">
+  {{ element }}
+</div>

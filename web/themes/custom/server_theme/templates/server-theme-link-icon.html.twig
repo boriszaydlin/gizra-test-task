@@ -1,0 +1,6 @@
+{% set target = url.isExternal() ? '_blank' : '_self' %}
+
+<a href="{{ url }}" class="flex flex-row gap-1 justify-center items-center p-4 border-r" target="{{ target }}">
+  {{ icon|raw }}
+  <span class="">{{ title }}</span>
+</a>

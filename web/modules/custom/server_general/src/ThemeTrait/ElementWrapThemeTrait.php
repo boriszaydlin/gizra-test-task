@@ -309,6 +309,28 @@ trait ElementWrapThemeTrait {
   }
 
   /**
+   * Wrap an element with an action buttons inline layout.
+   *
+   * @param array|string|\Drupal\Core\StringTranslation\TranslatableMarkup $element
+   *   The render array, string or a TranslatableMarkup object.
+   *
+   * @return array
+   *   Render array.
+   */
+  protected function wrapContainerActions(array|string|TranslatableMarkup $element): array {
+    $element = $this->filterEmptyElements($element);
+    if (empty($element)) {
+      // Element is empty, so no need to wrap it.
+      return [];
+    }
+
+    return [
+      '#theme' => 'server_theme_container_actions',
+      '#items' => $element,
+    ];
+  }
+
+  /**
    * Wrap an element with Prose text.
    *
    * @return array
@@ -557,6 +579,33 @@ trait ElementWrapThemeTrait {
 
     return [
       '#theme' => 'server_theme_text_decoration__font_color',
+      '#color' => $color->value,
+      '#element' => $element,
+    ];
+  }
+
+  /**
+   * Wrap an element with text color badge.
+   *
+   * @param array|string|\Drupal\Core\StringTranslation\TranslatableMarkup $element
+   *   The render array, string or a TranslatableMarkup object.
+   * @param \Drupal\server_general\ThemeTrait\Enum\TextColorEnum $color
+   *   The font color.
+   *
+   * @return array
+   *   Render array.
+   */
+  protected function wrapTextColorBadge(array|string|TranslatableMarkup $element, TextColorEnum $color): array {
+    if (is_array($element)) {
+      $element = $this->filterEmptyElements($element);
+    }
+    if (empty($element)) {
+      // Element is empty, so no need to wrap it.
+      return [];
+    }
+
+    return [
+      '#theme' => 'server_theme_text_decoration__font_color_badge',
       '#color' => $color->value,
       '#element' => $element,
     ];

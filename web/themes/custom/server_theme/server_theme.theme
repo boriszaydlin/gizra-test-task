@@ -100,6 +100,13 @@ function server_theme_theme() {
     ],
   ];
 
+  // Wrap inline bottom bar for container with rounded corners.
+  $info['server_theme_container_actions'] = [
+    'variables' => [
+      'items' => [],
+    ],
+  ];
+
   // Wrapper for "View more" items. Items over the limit will be hidden.
   $info['server_theme_element_items_with_view_more'] = [
     'variables' => [
@@ -178,6 +185,15 @@ function server_theme_theme() {
     ],
   ];
 
+  $info['server_theme_link_icon'] = [
+    'variables' => [
+      'url' => NULL,
+      'title' => NULL,
+      // Determine if an icon suffix should appear when URL is external.
+      'icon' => TRUE,
+    ],
+  ];
+
   // Content labels (e.g. showing the content type name on a card).
   $info['server_theme_label'] = [
     'variables' => [
@@ -225,6 +241,7 @@ function server_theme_theme() {
     'variables' => [
       // A render array.
       'items' => NULL,
+      'padding' => NULL,
     ],
   ];
 
@@ -357,6 +374,14 @@ function server_theme_theme() {
 
   // Wrapper for a text, adding font color.
   $info['server_theme_text_decoration__font_color'] = [
+    'variables' => [
+      'color' => NULL,
+      'element' => [],
+    ],
+  ];
+
+    // Wrapper for a text, adding font color.
+  $info['server_theme_text_decoration__font_color_badge'] = [
     'variables' => [
       'color' => NULL,
       'element' => [],
