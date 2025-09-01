@@ -47,6 +47,7 @@ function server_theme_theme() {
     'variables' => [
       'items' => [],
       'align' => NULL,
+      'padding' => NULL,
     ],
   ];
 

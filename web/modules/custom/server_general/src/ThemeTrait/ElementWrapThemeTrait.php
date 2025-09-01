@@ -109,7 +109,7 @@ trait ElementWrapThemeTrait {
    * @return array
    *   Render array.
    */
-  protected function wrapContainerVerticalSpacingTiny(array $element, AlignmentEnum $align = AlignmentEnum::Default): array {
+  protected function wrapContainerVerticalSpacingTiny(array $element, AlignmentEnum $align = AlignmentEnum::Default, $padding = FALSE): array {
     $element = $this->filterEmptyElements($element);
     if (empty($element)) {
       // Element is empty, so no need to wrap it.
@@ -120,6 +120,7 @@ trait ElementWrapThemeTrait {
       '#theme' => 'server_theme_container_vertical_spacing_tiny',
       '#items' => $element,
       '#align' => $align->value,
+      '#padding' => $padding,
     ];
   }
 

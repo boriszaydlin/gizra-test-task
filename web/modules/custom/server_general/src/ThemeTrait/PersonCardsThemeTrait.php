@@ -67,27 +67,26 @@ trait PersonCardsThemeTrait {
     $elements = [];
     $text_elements = [];
     $bottom_elements = [];
-
-    $element = $this->buildLineSeparator();
-    $elements[] = $this->wrapContainerMaxWidth($element, WidthEnum::Lg);
     
     // Image
     $element = [
       '#theme' => 'image',
       '#uri' => $image_url,
       '#alt' => $alt,
-      '#width' => 100,
+      '#width' => 128,
     ];
 
     $elements[] = $this->wrapRoundedCornersFull($element);
 
 
     $element = $this->wrapTextFontWeight($name, FontWeightEnum::Medium);
+    $element = $this->wrapTextResponsiveFontSize($element, FontSizeEnum::Sm);
     $text_elements[] = $this->wrapTextCenter($element);
 
     if ($subtitle) {
       $element = $this->wrapTextResponsiveFontSize($subtitle, FontSizeEnum::Sm);
       $element = $this->wrapTextCenter($element);
+      $element = $this->wrapContainerMaxWidth($element, WidthEnum::Lg);
       $text_elements[] = $this->wrapTextColor($element, TextColorEnum::Gray);
     } else {
       $element = $this->buildLineSeparator();
@@ -95,7 +94,7 @@ trait PersonCardsThemeTrait {
     }
 
     if ($role) {
-      $element = $this->wrapTextResponsiveFontSize($role, FontSizeEnum::Sm);
+      $element = $this->wrapTextResponsiveFontSize($role, FontSizeEnum::Xs);
       $element = $this->wrapTextCenter($element);
       $text_elements[] = $this->wrapTextColorBadge($element, TextColorEnum::Green);
     } else {
@@ -113,7 +112,7 @@ trait PersonCardsThemeTrait {
     }
     if ($phone) {
       $bottom_elements[] = $this->buildLinkWithIcon(
-        'Phone',
+        'Call',
         \Drupal\Core\Url::fromUri("tel:$phone"),
         $color = ColorEnum::DarkGray,
         $underline = UnderlineEnum::Hover,
@@ -122,7 +121,7 @@ trait PersonCardsThemeTrait {
     }
     
     // Combine all text elements in a vertical stack with small spacing.
-    $elements[] = $this->wrapContainerVerticalSpacingTiny($text_elements, AlignmentEnum::Center);
+    $elements[] = $this->wrapContainerVerticalSpacingTiny($text_elements, AlignmentEnum::Center, $padding = true);
     
     if (!empty($bottom_elements)) {
       $elements[] = $this->wrapContainerActions($bottom_elements);
