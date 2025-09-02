@@ -8,6 +8,6 @@
   ] | join(' ') | trim %}
   {{ classes }}
 {% endmacro %}
-<div class="{{ _self.getClass(align) }}">
+<div class="{{ _self.getClass(align) }} {% if padding %} p-4 {% endif %}">
   {{ items }}
 </div>
