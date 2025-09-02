@@ -173,7 +173,7 @@ trait ElementNodeGroupThemeTrait {
       return [];
     }
     if (!Og::getMembership($entity, $current_user)) {
-      // If not a member of the group show the modal
+      // If not a member of the group show the invitation to subscribe
       $element = [];
       $text = $this->t(
         'Hi @name, click here if you would like to subscribe to this group called @label.',
@@ -185,7 +185,7 @@ trait ElementNodeGroupThemeTrait {
 
       $element[] = $this->buildLabelsFromText([$text]);
       $url = \Drupal\Core\Url::fromUri('internal:/group/node/' . $entity->id() . '/subscribe');
-      $link = \Drupal\Core\Link::fromTextAndUrl($this->t('Subscribe'), $url);
+      $link = \Drupal\Core\Link::fromTextAndUrl($this->t('Subscribe'), $url, ['attributes' => ['class' => ['subscribe-button']]]);
       $element[] = $this->buildButtonPrimary($link);
       
     } else {
